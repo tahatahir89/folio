@@ -1,0 +1,261 @@
+/* Document typography. Keep in sync with src/lib/export/common.ts (TYPE). */
+
+.folio-prose {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  color: #1f2328;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.folio-prose > * + * {
+  margin-top: 0;
+}
+
+.folio-prose p {
+  margin: 0 0 8pt;
+  min-height: 1.5em;
+}
+
+.folio-prose h1,
+.folio-prose h2,
+.folio-prose h3,
+.folio-prose h4,
+.folio-prose h5,
+.folio-prose h6 {
+  color: #111827;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.folio-prose h1 { font-size: 20pt; margin: 18pt 0 6pt; }
+.folio-prose h2 { font-size: 16pt; margin: 14pt 0 5pt; }
+.folio-prose h3 { font-size: 14pt; margin: 12pt 0 4pt; }
+.folio-prose h4 { font-size: 12pt; margin: 10pt 0 4pt; }
+.folio-prose > :first-child { margin-top: 0; }
+
+.folio-prose p[data-doc-style='title'] {
+  font-size: 28pt;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111827;
+  margin-bottom: 4pt;
+}
+.folio-prose p[data-doc-style='subtitle'] {
+  font-size: 14pt;
+  line-height: 1.35;
+  color: #6b7280;
+  margin-bottom: 14pt;
+}
+
+.folio-prose ul,
+.folio-prose ol {
+  margin: 0 0 8pt;
+  padding-left: 20pt;
+}
+.folio-prose ul { list-style: disc; }
+.folio-prose ul ul { list-style: circle; }
+.folio-prose ul ul ul { list-style: square; }
+.folio-prose ol { list-style: decimal; }
+.folio-prose ol ol { list-style: lower-alpha; }
+.folio-prose ol ol ol { list-style: lower-roman; }
+.folio-prose li > p { margin: 0 0 3pt; }
+.folio-prose li > ul,
+.folio-prose li > ol { margin-bottom: 0; }
+
+.folio-prose ul[data-type='taskList'] {
+  list-style: none;
+  padding-left: 0;
+}
+.folio-prose ul[data-type='taskList'] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.folio-prose ul[data-type='taskList'] li > label {
+  flex: none;
+  margin-top: 0.38em;
+  user-select: none;
+}
+.folio-prose ul[data-type='taskList'] li > label input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: hsl(243 75% 59%);
+  cursor: pointer;
+}
+.folio-prose ul[data-type='taskList'] li > div { flex: 1; min-width: 0; }
+.folio-prose ul[data-type='taskList'] li[data-checked='true'] > div { color: #6b7280; }
+.folio-prose ul[data-type='taskList'] ul[data-type='taskList'] { margin-bottom: 0; }
+
+.folio-prose blockquote {
+  margin: 0 0 8pt;
+  padding-left: 14pt;
+  border-left: 3px solid #d1d5db;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.folio-prose pre {
+  margin: 0 0 8pt;
+  padding: 8pt;
+  background: #f3f4f6;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 9.5pt;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  color: #1f2328;
+}
+.folio-prose pre code { background: none; padding: 0; font-size: inherit; }
+.folio-prose code {
+  background: #f3f4f6;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9em;
+}
+
+.folio-prose hr {
+  border: 0;
+  border-top: 1px solid #d1d5db;
+  margin: 10pt 0;
+}
+
+.folio-prose a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.folio-prose mark {
+  background: #fff59d;
+  color: inherit;
+  padding: 0;
+  border-radius: 2px;
+}
+
+.folio-prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 6pt 0 8pt;
+}
+.folio-prose img[data-align='center'] { margin-left: auto; margin-right: auto; }
+.folio-prose img[data-align='right'] { margin-left: auto; }
+.folio-prose img.ProseMirror-selectednode {
+  outline: 2px solid hsl(243 75% 59%);
+  outline-offset: 2px;
+}
+
+.folio-prose div[data-type='page-break'] {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0;
+  color: #9ca3af;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  user-select: none;
+}
+.folio-prose div[data-type='page-break']::before,
+.folio-prose div[data-type='page-break']::after {
+  content: '';
+  flex: 1;
+  border-top: 1px dashed #cbd0d8;
+}
+.folio-prose div[data-type='page-break']::before { order: 0; }
+.folio-prose div[data-type='page-break']::after { order: 2; }
+.folio-prose div[data-type='page-break'] { letter-spacing: 0.02em; }
+.folio-prose div[data-type='page-break'].ProseMirror-selectednode { color: hsl(243 75% 59%); }
+
+/* Tables */
+.folio-prose .tableWrapper { overflow-x: auto; margin: 6pt 0 8pt; }
+.folio-prose table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+.folio-prose td,
+.folio-prose th {
+  position: relative;
+  min-width: 48px;
+  padding: 5pt;
+  border: 1px solid #cbd0d8;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+.folio-prose th {
+  background: #f3f4f6;
+  font-weight: 700;
+  text-align: left;
+}
+.folio-prose td > p,
+.folio-prose th > p { margin: 0 0 2pt; min-height: 1.4em; }
+.folio-prose .selectedCell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: hsl(243 75% 59% / 0.14);
+  pointer-events: none;
+  z-index: 2;
+}
+.folio-prose .column-resize-handle {
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: -2px;
+  width: 4px;
+  background: hsl(243 75% 59%);
+  pointer-events: none;
+}
+.folio-prose.resize-cursor,
+.resize-cursor { cursor: col-resize; }
+
+/* Editor surface */
+.ProseMirror { outline: none; min-height: 100%; caret-color: hsl(243 75% 59%); }
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  color: #9ca3af;
+  pointer-events: none;
+}
+.ProseMirror-gapcursor::after { border-top-color: hsl(243 75% 59%); }
+
+/* The paper */
+.folio-canvas { background: hsl(var(--canvas)); }
+
+.folio-sheet {
+  --page-w: 794px;
+  --page-h: 1123px;
+  --page-pad: 96px;
+  position: relative;
+  width: min(var(--page-w), 100%);
+  min-height: var(--page-h);
+  margin-inline: auto;
+  padding: var(--page-pad);
+  background-color: #fff;
+  border-radius: 3px;
+}
+@media (min-width: 768px) {
+  /* faint page boundary every page-height, so long documents read as pages */
+  .folio-sheet {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--page-h) - 1px),
+      #e3e6eb calc(var(--page-h) - 1px),
+      #e3e6eb var(--page-h)
+    );
+  }
+}
+@media (max-width: 767px) {
+  .folio-sheet { padding: 24px 20px; min-height: 70dvh; }
+}
+
+/* Non-interactive miniature used in template cards */
+.folio-prose--static { pointer-events: none; user-select: none; }
